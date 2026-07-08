@@ -1,0 +1,27 @@
+ui-from-wireframe/
+│
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   └── generateUI.js
+│   ├── services/
+│   │   └── aiService.js
+│   ├── .env
+│   └── package.json
+│
+└── frontend/
+    ├── src/
+    │   ├── App.jsx
+    │   ├── components/
+    │   │   ├── UploadForm.jsx
+    │   │   ├── CodeOutput.jsx
+    │   │   └── Preview.jsx
+    │   └── main.jsx
+    └── package.json
+
+
+
+TODO : 
+1. now supporting only HTML - support jsx(REact component) / Angular/ Vue.js / any required language
+2. More precise Output
+3. learn how to validate
