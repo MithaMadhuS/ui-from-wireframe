@@ -26,8 +26,8 @@ function App() {
         body: formData,
       });
       const data = await res.json();
-      // setCode(data.jsx);
-      const cleanedHtml = cleanAIHtml(data.jsx);
+      console.log(data, "data")
+      const cleanedHtml = cleanAIHtml(data.html);
       setCode(cleanedHtml);
     } catch (err) {
       alert("Generation failed");
