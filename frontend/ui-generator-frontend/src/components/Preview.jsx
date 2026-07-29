@@ -38,15 +38,29 @@
 // }
 
 // export default Preview;
+
 function Preview({ code }) {
+  //   const srcDoc = `
+  // <!DOCTYPE html>
+  // <html>
+  //   <head>
+  //     <script src="https://cdn.tailwindcss.com"></script>
+  //     <style>
+  //       body { padding: 16px; background: #f9fafb; }
+  //     </style>
+  //   </head>
+  //   <body>
+  //     ${code}
+  //   </body>
+  // </html>
+  // `;
+
   const srcDoc = `
 <!DOCTYPE html>
 <html>
   <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body { padding: 16px; background: #f9fafb; }
-    </style>
+    <link rel="stylesheet" href="Preview.css"> </link>
   </head>
   <body>
     ${code}
@@ -55,14 +69,16 @@ function Preview({ code }) {
 `;
 
   return (
-    <iframe
-      title="preview"
-      srcDoc={srcDoc}
-      className="w-full h-96 border rounded"
-      sandbox="allow-scripts"
-    />
+    <>
+      <div className="panel-title">Live Preview</div>
+      <iframe
+        title="preview"
+        className="preview-frame"
+        srcDoc={srcDoc}
+        sandbox="allow-scripts"
+      />
+    </>
   );
 }
 
 export default Preview;
-

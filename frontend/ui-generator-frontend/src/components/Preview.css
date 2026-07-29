@@ -1,0 +1,19 @@
+.preview-frame {
+  flex: 1;
+
+  width: 100%;
+
+  border: none;
+
+  background: white;
+}
+
+.panel-title {
+  padding: 14px 18px;
+
+  font-weight: bold;
+
+  border-bottom: 1px solid #eee;
+
+  background: #fafafa;
+}

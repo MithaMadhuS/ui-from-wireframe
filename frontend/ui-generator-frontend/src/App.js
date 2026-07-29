@@ -26,7 +26,7 @@ function App() {
         body: formData,
       });
       const data = await res.json();
-      console.log(data, "data")
+      console.log(data, "data");
       const cleanedHtml = cleanAIHtml(data.html);
       setCode(cleanedHtml);
     } catch (err) {
@@ -37,10 +37,33 @@ function App() {
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <UploadForm onGenerate={generateUI} loading={loading} />
-      {code && <CodeOutput code={code} />}
-      {code && <Preview code={code} />}
+    // <div className="p-6 space-y-6">
+    //   <UploadForm onGenerate={generateUI} loading={loading} />
+    //   {code &&
+    //   <div>
+    //     <CodeOutput code={code} />
+    //     <Preview code={code} />
+    //   </div>}
+    // </div>
+
+    <div className="app">
+      <header className="header">
+        <h1>AI Wireframe Generator</h1>
+      </header>
+
+      <section className="toolbar">
+        {/* Upload */}
+        <UploadForm onGenerate={generateUI} loading={loading} />
+      </section>
+
+      <section className="workspace">
+        <div className="code-panel"><CodeOutput code={code} /></div>
+        
+
+        <div className="preview-panel">
+          <Preview code={code} />
+        </div>
+      </section>
     </div>
   );
 }
