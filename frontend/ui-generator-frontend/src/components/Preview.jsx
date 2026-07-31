@@ -1,53 +1,11 @@
-// function Preview({ code }) {
-//   console.log(code, "code")
-//   const srcDoc = `
-//     <!DOCTYPE html>
-//     <html>
-//       <head>
-//         <script src="https://cdn.tailwindcss.com"></script>
-//       </head>
-//       <body>
-//         <div id="root"></div>
-//         <script type="module">
-//           import React from "https://esm.sh/react";
-//           import ReactDOM from "https://esm.sh/react-dom/client";
-
-//           function Component() {
-//           return (
-//               ${code}
-//             );
-//           }
-
-//           ReactDOM.createRoot(document.getElementById("root"))
-//             .render(React.createElement(Component));
-//         </script>
-//       </body>
-//     </html>
-//   `;
-
-//   return (
-//     <div>
-//       <h2 className="font-bold mb-2">Preview</h2>
-//       <iframe
-//         title="preview"
-//         srcDoc={srcDoc}
-//         className="w-full h-96 border"
-//       />
-//     </div>
-//   );
-// }
-
-// export default Preview;
-
+import './Preview.css';
 function Preview({ code }) {
+
   //   const srcDoc = `
   // <!DOCTYPE html>
   // <html>
   //   <head>
   //     <script src="https://cdn.tailwindcss.com"></script>
-  //     <style>
-  //       body { padding: 16px; background: #f9fafb; }
-  //     </style>
   //   </head>
   //   <body>
   //     ${code}
@@ -56,16 +14,33 @@ function Preview({ code }) {
   // `;
 
   const srcDoc = `
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
   <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="Preview.css"> </link>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   </head>
+
   <body>
-    ${code}
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+  ${code}
+
+  ReactDOM.createRoot(document.getElementById("root"))
+  .render(<App/>);
+
+  </script>
+
   </body>
-</html>
+  </html>
 `;
 
   return (
