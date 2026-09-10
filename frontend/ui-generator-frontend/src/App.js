@@ -21,14 +21,17 @@ function App() {
     formData.append("wireframe", file);
 
     try {
-      const res = await fetch("http://localhost:4000/generate-ui", {
+      // Changing from localhost to /api/generate-ui for reverse proxy
+      // const res = await fetch("http://localhost:4000/generate-ui", {
+      const res = await fetch("/api/generate-ui", {
         method: "POST",
         body: formData,
       });
       const data = await res.json();
       console.log(data, "data");
-      const cleanedHtml = cleanAIHtml(data.html);
-      setCode(cleanedHtml);
+      setCode(data.html)
+      // const cleanedHtml = cleanAIHtml(data.html);
+      // setCode(cleanedHtml);
     } catch (err) {
       alert("Generation failed");
     } finally {
@@ -56,6 +59,7 @@ function App() {
         <UploadForm onGenerate={generateUI} loading={loading} />
       </section>
 
+      {code && 
       <section className="workspace">
         <div className="code-panel"><CodeOutput code={code} /></div>
         
@@ -64,6 +68,7 @@ function App() {
           <Preview code={code} />
         </div>
       </section>
+      }
     </div>
   );
 }

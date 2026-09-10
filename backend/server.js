@@ -1,16 +1,17 @@
 import dotenv from "dotenv";
+// import "dotenv/config";
 // Load environment variables
 dotenv.config();
 import express from "express";
-import cors from "cors";
+// import cors from "cors";
 import generateUIRoute from "./src/routes/generateUI.js";
 
 console.log(process.env.GEMINI_API_KEY);
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 // Enable CORS for frontend requests
-app.use(cors());
+// app.use(cors());
 
 // Parse JSON bodies
 app.use(express.json());
@@ -27,6 +28,6 @@ app.get("/health", (req, res) => {
 app.use("/generate-ui", generateUIRoute);
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
